@@ -1,10 +1,11 @@
-import logo from "./logo.svg";
 import "./App.css";
+
+import Home from "./components/home";
 
 function App() {
   return (
     <div className="App">
-      <a href="tel:9390083894">call me</a>
+      <Home />
     </div>
   );
 }
