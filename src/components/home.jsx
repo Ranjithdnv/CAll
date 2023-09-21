@@ -19,7 +19,7 @@ function Home() {
   useEffect(() => {
     const students = async () => {
       try {
-        const res = await axios.get("http://localhost:3004/students", {
+        const res = await axios.get("https://caalapi.onrender.com/students", {
           //   headers: {
           //     Authorization: `Bearer ${localStorage?.getItem("token") || null}`,
           //   },
@@ -46,7 +46,7 @@ function Home() {
     localStorage.setItem("classes", obj);
     try {
       const res = await axios.post(
-        "http://localhost:3004/createstudent",
+        "https://caalapi.onrender.com/createstudent",
         Studentinfo
         // {
         //   headers: {
