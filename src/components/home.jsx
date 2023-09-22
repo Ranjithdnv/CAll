@@ -6,10 +6,13 @@ import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import SendRoundedIcon from "@mui/icons-material/SendRounded";
 import AddIcCallRoundedIcon from "@mui/icons-material/AddIcCallRounded";
 function Home() {
+  const [classtoupload, setclasstoupload] = useState("");
+  const [classesupload, setclassesupload] = useState(false);
   const [createBox, setcreateBox] = useState(false);
   const [students, setstudents] = useState([]);
+  const [test, settest] = useState([]);
   const [studentsall, setstudentsall] = useState([]);
-  const [classofstudent, setclassofstudent] = useState("");
+
   const [classes, setclasses] = useState(
     JSON.parse(localStorage.getItem("classes")) || []
   );
@@ -34,10 +37,12 @@ function Home() {
     };
     students();
   }, []);
+  useEffect(() => {}, [classesupload]);
 
   const filterbyclass = (classStudent) => {
     const classfilter = studentsall.filter(function (el) {
-      // console.log(el.class);
+      // console.log(el.class);http://localhost:3000/
+      // class in class  calling seeeee---------------------------------------------------
 
       if (el.class === classStudent.class) {
         return el;
@@ -62,14 +67,55 @@ function Home() {
   };
 
   const createStudent = async () => {
+    const setter = () => {
+      classes.push({ class: classofstudentcreate.current.value });
+      setclassesupload(!classesupload);
+      setclasstoupload(classofstudentcreate.current.value);
+      console.log("changed");
+      console.log(classtoupload);
+      //
+      const studentsclass = async () => {
+        try {
+          // https://caalapi.onrender.com/
+          const res = await axios.put(
+            "https://caalapi.onrender.com/addclass/650da07ccb70298728126c96",
+            { classes: classofstudentcreate.current.value }
+            //{
+            //   headers: {
+            //     Authorization: `Bearer ${localStorage?.getItem("token") || null}`,
+            //   },
+            // }
+          );
+
+          console.log(res.data);
+          settest(res.data);
+          // setstudentsall(res.data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      studentsclass();
+    };
     const Studentinfo = {
       class: classofstudentcreate.current.value,
       name: nameofstudent.current.value,
       phonenumber: phonenumberofstudent.current.value,
     };
+    // ----------------------------------------------------some atleast
     !classes?.some(
       (user) => user.class === classofstudentcreate.current.value
-    ) && classes.push({ class: classofstudentcreate.current.value });
+    ) && setter();
+    // && next function because multiple statements not working after &&----------------------------------------------
+    console.log(classes);
+    // dupilicate remove -------------------------------------------------------------
+    //   function onlyUnique(value, index, array) {
+    //   return array.indexOf(value) === index;
+    // }
+
+    // // usage example:
+
+    // var unique = classes.filter(onlyUnique);
+    // console.log(unique);
     let obj = JSON.stringify(classes);
     localStorage.setItem("classes", obj);
     try {
@@ -86,7 +132,7 @@ function Home() {
       console.log(err);
     }
   };
-
+  console.log(test);
   return (
     <div className="app">
       <div></div>{" "}
@@ -148,6 +194,7 @@ function Home() {
       </div>
       <div className="all-classes">
         {classes?.map((classStudent, index) => (
+          // for array with out objects---------------------------------------------------
           <div className="class-each-box-con" key={index}>
             <div
               onClick={() => {
@@ -181,6 +228,8 @@ function Home() {
           );
         })}
       </div>
+      {/* for array with out objects--------------------------------------------------- */}
+      {test?.map((t) => t)}
     </div>
   );
 }
