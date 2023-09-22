@@ -26,27 +26,41 @@ body {
 .heading {
   /* border: 1px solid black; */
   color: orangered;
-  font-size: 40px;
-  letter-spacing: 5px;
+  font-size: 3rem;
+  letter-spacing: 0.4rem;
 }
 .add-student-box {
   /* border: 1px solid rgb(133, 21, 231); */
 }
 .logo {
   /* border: 1px solid black; */
+  border-radius: 1rem;
+  height: 4rem;
+  width: 6rem;
 }
 .create-box {
   /* border: 1px solid rgb(33, 18, 242); */
 }
 .create-box-box {
-  border: 1px solid rgb(81, 83, 82);
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding-inline: 5px;
   height: 5rem;
 }
-
+.create-box-box-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  column-gap: 1rem;
+}
+.create-box-box-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 1rem;
+  height: 0.8rem;
+}
 .all-classes {
   display: flex;
   justify-content: space-between;
@@ -80,7 +94,8 @@ body {
 .class-each-box {
   width: 20vw;
   text-align: center;
-  background-color: rgb(250, 250, 250);
+  height: 2rem;
+  background-color: rgb(255, 255, 255);
 }
 /* .students-con {
   display: flex;
@@ -151,9 +166,133 @@ a {
 }
 .send-round {
   font-size: larger;
-  height: 3em !important;
-  width: 1.5em !important;
+  height: 3rem !important;
+  width: 3rem !important;
   display: inline-block;
   align-items: center;
   text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+  .send-round {
+    font-size: larger;
+    height: 3rem !important;
+    width: 3rem !important;
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+  }
+  .create-box-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-inline: 5px;
+
+    height: 9rem;
+  }
+  .create-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height: 9rem; */
+  }
+  .create-box-box-bottom {
+    display: flex;
+    align-items: center;
+  }
+  .logo {
+    border-radius: 1rem;
+    height: 4rem;
+    width: 6rem;
+  }
+  /* input {
+    height: 2rem;
+  } */
+}
+@media screen and (max-width: 400px) {
+  .send-round {
+    font-size: larger;
+    height: 2rem !important;
+    width: 2rem !important;
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+  }
+  .create-box-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-inline: 5px;
+    row-gap: 0.4rem;
+    height: 9rem;
+  }
+  .create-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height: 9rem; */
+  }
+  .logo {
+    border-radius: 1rem;
+    height: 4rem;
+    width: 6rem;
+  }
+  .topbar {
+    width: 100%;
+    font-size: large;
+    font-weight: bolder;
+    border-bottom: 10px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-inline: 1rem;
+  }
+  .heading {
+    display: none;
+  }
+  .name {
+    display: flex;
+    width: 400px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(249, 248, 247);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    text-transform: capitalize;
+  }
+  .students {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 15px;
+    font-weight: 500;
+    height: 3rem;
+    background-color: rgb(224, 240, 253);
+  }
+  .class-student {
+    width: 200px;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(249, 249, 249);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+  }
+  .create-box-box-bottom {
+    display: flex;
+    align-items: center;
+    column-gap: 0px;
+  }
+  input {
+    border-radius: 1rem;
+    height: 2.6rem;
+    width: 45%;
+  }
+  .create-box-box-bottom input {
+    width: 80%;
+  }
 }
